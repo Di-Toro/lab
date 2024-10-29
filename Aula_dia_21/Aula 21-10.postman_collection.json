@@ -1,0 +1,64 @@
+{
+	"info": {
+		"_postman_id": "4b3cea63-80e1-40a3-a618-8e06d215706f",
+		"name": "Aula dia 21/10/2024",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "d51015ee-0063-45b2-8f24-5e908e192662"
+	},
+	"item": [
+		{
+			"name": "Busca pokemon",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/pokemon/ditto",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"pokemon",
+						"ditto"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscando pokemon que nao existe!",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/pokemon/Toguro",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"pokemon",
+						"Toguro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get endpoint inexistente",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/pokemon/ditto",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"pokemon",
+						"ditto"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
