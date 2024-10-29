@@ -51,8 +51,8 @@ describe("Cookies", () => {
     cy.get(".osano-cm-accept").click();
     cy.getAllCookies().then((cookies) => {
       expect(
-        cookies.find((cookie) => cookie.name === "osano_consentmanager")
-      ).to.have.property("value");
+        cookies.some((cookie) => cookie.name === "osano_consentmanager")
+      ).to.be.true;
     });
   });
 });
