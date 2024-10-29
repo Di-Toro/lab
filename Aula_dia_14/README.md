@@ -6,13 +6,11 @@
 npm install
 ```
 
-### Executando
+### Executando (2 maneiras)
 
 ```bash
 npx cypress run
 ```
-
-ou:
 
 ```bash
 npx cypress open
