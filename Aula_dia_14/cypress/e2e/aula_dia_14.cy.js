@@ -5,6 +5,25 @@ describe("Teste p/ carregar e navegar", () => {
   });
 
 
+  it("Verifica se o título tá certp", () => {
+    cy.visit("https://docs.cypress.io/app/get-started/why-cypress");
+	cy.title().should("eq", "Why Cypress?");
+  });
+
+
+  it("Verifica se o menu de navegação tá visível", () => {
+    cy.visit("https://docs.cypress.io/app/get-started/why-cypress");
+    cy.get(".navbar").scrollIntoView();
+    cy.contains("Getting Started").should("be.visible");
+  });
+
+
+  it("Valida o botão de documentação", () => {
+    cy.visit("https://docs.cypress.io/app/get-started/why-cypress");
+    cy.contains("Documentation").should("exist").and("be.visible");
+  });
+
+
   it("Verifica se o footer foi carregado corretamente", () => {
     cy.visit("https://docs.cypress.io/app/get-started/why-cypress");
     cy.get(".footer").scrollIntoView();
