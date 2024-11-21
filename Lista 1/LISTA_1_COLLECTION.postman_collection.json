@@ -1,0 +1,322 @@
+{
+	"info": {
+		"_postman_id": "ab4d75e5-7a24-4781-a260-3e644bf41aef",
+		"name": "LISTA_1_COLLECTION",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39918407"
+	},
+	"item": [
+		{
+			"name": "Testes positivos",
+			"item": [
+				{
+					"name": "1 - Obter todos os posts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Se tem o texto do usuario 1\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"sunt aut facere repellat provident occaecati excepturi optio reprehenderit\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/posts",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2 - Obter usuario 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Se tem os campos de um usuario\r",
+									"pm.test(\"Verificar se a resposta tem os campos esperados\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property(\"userId\");\r",
+									"    pm.expect(jsonData).to.have.property(\"id\");\r",
+									"    pm.expect(jsonData).to.have.property(\"title\");\r",
+									"    pm.expect(jsonData).to.have.property(\"body\");\r",
+									"});\r",
+									"\r",
+									"// Se tem o texto titulo do usuario 2\r",
+									"pm.test(\"Se tem o texto titulo do usuario 2\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"qui est esse\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/posts/2",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"posts",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3 - Postar dados",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201 Created\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Verificar se a resposta tem o ID\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property(\"id\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"title\": \"Titulo muito bom!\",\r\n\"body\": \"Este é um novo post!!!1! :D\",\r\n\"userId\": 69420\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/posts",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4 - Atualizar post existente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verifica resposta depois de atualizar\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.eql(1);\r",
+									"    pm.expect(jsonData.title).to.eql(\"Meu titulo novo, atualizado\");\r",
+									"    pm.expect(jsonData.body).to.eql(\"Meu corpinho uwu\");\r",
+									"    pm.expect(jsonData.userId).to.eql(1);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 1,\r\n  \"title\": \"Meu titulo novo, atualizado\",\r\n  \"body\": \"Meu corpinho uwu\",\r\n  \"userId\": 1\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/posts/1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"posts",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Testes negativos",
+			"item": [
+				{
+					"name": "5 - Endpoint não existe",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"title\": \"foo\",\r\n    \"body\": \"bar\",\r\n    \"userId\": \"1\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/PAO_DE_BATATA",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"PAO_DE_BATATA"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6 - Body com dados faltando",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// O site jsonplaceholder meio que aceita qualquer coisa, mas caso fosse uma API de verdade, deveria dar Bad Request (400), já que não enviei os campos obrigatorios nesse teste!\r",
+									"\r",
+									"// Se status é 400 (erro de requisição)\r",
+									"pm.test(\"Status 400 - Bad Request\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"// Se o body contém uma mensagem de erro. Para ver se tem os campos obrigatorios\r",
+									"pm.test(\"Campos ausentes\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    \r",
+									"\r",
+									"    pm.expect(jsonData.error).to.include(\"title and body are required\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/posts",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "7 - Usuario nao existe",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Como o usuario 666666 não existe, o corpo da repsosta estara vazio {}\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(Object.keys(jsonData).length).to.eql(0);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/posts/666666",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"posts",
+								"666666"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
