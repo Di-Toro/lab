@@ -1,6 +1,4 @@
-# Testes de API com Postman - LISTA 1
-
-Este repositório contém os testes de API realizados utilizando o **Postman** e o **Newman** para automação.
+# Testes de API com Postman - LISTA 1 - S206
 
 ## Estrutura do Repositório
 
@@ -15,7 +13,11 @@ Para gerar o relatório de testes, basta rodar o comando dentro da pasta do proj
 
 ```bash
 newman run "LISTA_1_COLLECTION.postman_collection.json" -e "Meu ambintezinho.postman_environment.json" -r htmlextra
+```
+
+### Ou também, para somente rodar sem gerar relatório:
+ Importar **``LISTA_1_COLLECTION.postman_collection.json``** e **``Meu ambintezinho.postman_environment.json``** para o postman e executar os requests. :)
 
 ## Nota importante
 
-	Teste 6 - Body com dados faltando: O teste foi realizado utilizando a API JSONPlaceholder. Embora ela aceite dados incompletos (como o envio de um corpo com campos faltando), em uma API real, isso deveria resultar em um erro Bad Request (400), já que campos obrigatórios não foram fornecidos.
+- **Teste 6 - Body com dados faltando**: Esse teste foi realizado utilizando a API JSONPlaceholder. Embora ela aceite dados incompletos (como o envio de um corpo com campos faltando), em uma API de verdade, isso *deveria* resultar num ``Bad Request - 400``, já que os campos que deveriam ser obrigatórios estão faltando.
