@@ -2,7 +2,7 @@
 
 ## Estrutura do Repositório
 
-- **/newman**: Contém os relatórios gerados.
+- **/newman**: Contém os relatórios gerados e prints do meu postman.
 - **respostas.txt**: Contém as respostas para o EX 2.
 - **LISTA_1_COLLECTION.postman_collection.json**: Coleção de testes do Postman.
 - **Meu ambintezinho.postman_environment.json**: Meu ambiente usado nos testes.
