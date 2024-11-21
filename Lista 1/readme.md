@@ -1,11 +1,13 @@
 # Testes de API com Postman - LISTA 1 - S206
 
+
 ## Estrutura do Repositório
 
 - **/newman**: Contém os relatórios gerados e prints do meu postman.
 - **respostas.txt**: Contém as respostas para o EX 2.
 - **LISTA_1_COLLECTION.postman_collection.json**: Coleção de testes do Postman.
 - **Meu ambintezinho.postman_environment.json**: Meu ambiente usado nos testes.
+
 
 ## Executando
 
@@ -15,8 +17,16 @@ Para gerar o relatório de testes, basta rodar o comando dentro da pasta do proj
 newman run "LISTA_1_COLLECTION.postman_collection.json" -e "Meu ambintezinho.postman_environment.json" -r htmlextra
 ```
 
-### Ou também, para somente rodar sem gerar relatório:
- Importar **``LISTA_1_COLLECTION.postman_collection.json``** e **``Meu ambintezinho.postman_environment.json``** para o postman e executar os requests. :)
+### Rodando sem gerar relatório:
+
+```bash
+newman run "LISTA_1_COLLECTION.postman_collection.json" -e "Meu ambintezinho.postman_environment.json"
+```
+
+ou
+
+Importar **``LISTA_1_COLLECTION.postman_collection.json``** e **``Meu ambintezinho.postman_environment.json``** para o postman e executar os requests. :)
+
 
 ## Nota importante
 
