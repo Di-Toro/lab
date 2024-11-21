@@ -1,7 +1,7 @@
-1) Os testes desenvolvidos são manuais, pois estão sendo feitos no Postman e executados manualmente. Seriam automatizados se fossem executados automaticamente, como com o Mocha, JUnit ou o Collection Runner do Postman.
+1) Os testes são manuais, pois estão sendo executados manualmente. Seriam automatizados se fossem executados automaticamente, como com o Mocha, JUnit ou o Collection Runner do próprio Postman.
 
 
-2) Sim, os testes de obter todos os posts e postar dados (GET e POST) são testes Fim-a-Fim (End-to-End), pois simulam o comportamento completo de uma interação com a API, desde a requisição até a resposta.
+2) Não, já que meus testes são focados somente em API, não envolvendo camadas de frontend, BD, etc..
 
 
 3) Para que os testes funcionem em modo regressão, é necessário:
@@ -10,6 +10,6 @@
 	
 	* Controlar o ambiente de testes para garantir que os testes funcionem de forma consistente.
 	
-	* Gerar relatórios e monitoramento dos testes, para identificar falhas e manter um histórico.
+	* Gerar relatórios e monitoramento dos testes, para identificar falhas e manter algum histórico.
 	
-	* Verificar a API em ambientes de produção para garantir que alterações não impactem negativamente o funcionamento da API.
+	* Verificar a API em ambientes de PROD para garantir que mudanças não façam ela parar de funcionar.
