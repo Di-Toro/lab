@@ -1,0 +1,274 @@
+{
+	"info": {
+		"_postman_id": "ab4d75e5-7a24-4781-a260-3e644bf41aef",
+		"name": "Prova_Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39918407"
+	},
+	"item": [
+		{
+			"name": "Testes positivos",
+			"item": [
+				{
+					"name": "1 - Ver se o site tá up",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.practicesoftwaretesting.com/api/documentation",
+							"protocol": "https",
+							"host": [
+								"api",
+								"practicesoftwaretesting",
+								"com"
+							],
+							"path": [
+								"api",
+								"documentation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2 - Ver se tem um Marcel- MARTELO",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Find Hammer in response\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    let hammer = jsonData.find(item => item.name === \"Hammer\");\r",
+									"    pm.expect(hammer).to.exist;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.practicesoftwaretesting.com/categories",
+							"protocol": "https",
+							"host": [
+								"api",
+								"practicesoftwaretesting",
+								"com"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3 - Atualizar uma marca",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"AAAAAAAAAAAAA\",\r\n  \"slug\": \"AAAAAAAAAAAAAAAAAAAAAAAAAAAA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.practicesoftwaretesting.com/brands/",
+							"protocol": "https",
+							"host": [
+								"api",
+								"practicesoftwaretesting",
+								"com"
+							],
+							"path": [
+								"brands",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Testes negativos",
+			"item": [
+				{
+					"name": "4 - Marca não existe",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status 404 - Not found\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://api.practicesoftwaretesting.com/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+							"protocol": "https",
+							"host": [
+								"api",
+								"practicesoftwaretesting",
+								"com"
+							],
+							"path": [
+								"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5 - Endpoint não existe",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"title\": \"foo\",\r\n    \"body\": \"bar\",\r\n    \"userId\": \"1\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.practicesoftwaretesting.com/brandao/",
+							"protocol": "https",
+							"host": [
+								"api",
+								"practicesoftwaretesting",
+								"com"
+							],
+							"path": [
+								"brandao",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6 - Method Not Allowed",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status 405 - Bad Request\", function () {\r",
+									"    pm.response.to.have.status(405);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check for method not allowed message\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property(\"message\", \"Method is not allowed for the requested route\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"where do astronauts hang out?\",\r\n  \"slug\": \"At the space-bar!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.practicesoftwaretesting.com/brands/2",
+							"protocol": "https",
+							"host": [
+								"api",
+								"practicesoftwaretesting",
+								"com"
+							],
+							"path": [
+								"brands",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
