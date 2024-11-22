@@ -3,6 +3,8 @@
 
 # Executando parte 1 - Testes de UI
 
+Abra o cmd e digite:
+
 ```bash
 npx cypress run
 ```
